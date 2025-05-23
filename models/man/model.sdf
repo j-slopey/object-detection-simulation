@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<sdf version="1.11">
+<model name="male_dummy">
+<link name="person">
+    <pose>0 0 0 0 0 0</pose>
+    <visual name="person_visual">
+        <geometry>
+            <mesh>
+                <uri>/home/james/ros2_ws/src/field_camera_sim/models/meshes/male_dummy.stl</uri>
+                <scale>0.001 0.001 0.001</scale>
+            </mesh>
+        </geometry>
+        <material>
+          <ambient>0.827, 0.6, 0.447 1.0</ambient>
+          <diffuse>0.827, 0.6, 0.447 1.0</diffuse>
+          <specular>0.1 0.1 0.1 1.0</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+    </visual>
+</link>
+</model>
+</sdf>
