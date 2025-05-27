@@ -15,14 +15,13 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(pkg_gz_sim, 'launch', 'gz_sim.launch.py')
         ),
-        launch_arguments={'gz_args': '-r ' + os.path.join(pkg_field_camera_sim, 'worlds', 'field.world')}.items(),
+        launch_arguments={'gz_args': '-r ' + os.path.join(pkg_field_camera_sim, 'worlds', 'field.sdf')}.items(),
     )
 
     gz_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            # Syntax: GZ_TOPIC@ROS_MSG_TYPE@GZ_MSG_TYPE
             '/camera_image@sensor_msgs/msg/Image@gz.msgs.Image'
         ],
         output='screen'

@@ -6,7 +6,7 @@
     <visual name="person_visual">
         <geometry>
             <mesh>
-                <uri>/home/james/ros2_ws/src/field_camera_sim/models/meshes/male_dummy.stl</uri>
+                <uri>male_dummy.stl</uri>
                 <scale>0.001 0.001 0.001</scale>
             </mesh>
         </geometry>

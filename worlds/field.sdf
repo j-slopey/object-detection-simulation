@@ -1,0 +1,107 @@
+<?xml version="1.0" ?>
+<sdf version="1.11">
+  <world name="field">
+
+    <!-- Camera sensor plugin -->
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <!-- Plugin for 3D sim viewer -->
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"></plugin>
+
+    <!-- Background and lighting -->
+    <scene>
+      <ambient>1.0 1.0 1.0</ambient>
+      <!-- Blue Sky Color -->
+      <background>0.557, 0.871, 1</background>
+      <grid>false</grid>
+    </scene>
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Field Model -->
+    <model name="field">
+      <link name="field_link">
+        <collision name="collision1">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+            </plane>
+          </geometry>
+        </collision>
+
+        <visual name="playing_field">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal> 
+              <!-- Standard FIFA soccer field size-->
+              <size>105 68</size>
+            </plane>
+          </geometry>
+          <!-- Green Color -->
+          <material>
+            <ambient>0.129, 0.349, 0.125 1.0</ambient>
+            <diffuse>0.129, 0.349, 0.125 1.0</diffuse>
+            <specular>0.1 0.1 0.1 1.0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+
+        <visual name="field_surroundings">
+          <pose>0 0 -0.01 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal> 
+              <size>3000 3000</size>
+            </plane>
+          </geometry>
+          <!-- Dark Green Color -->
+          <material>
+            <ambient>0.027, 0.212, 0.024 1.0</ambient>
+            <diffuse>0.027, 0.212, 0.024 1.0</diffuse>
+            <specular>0.1 0.1 0.1 1.0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Camera  -->
+    <include>
+      <uri>model://camera</uri>
+      <name>simulation_camera</name>
+      <pose>0 60 8 0 0 4.71238898038</pose> <!-- Set location of camera (Currently at midfield, 40m from the center). Z should be 1/2 of stand height-->
+    </include>
+
+    <!-- Dummy Humans -->
+    <include>
+      <uri>model://man</uri>
+      <name>simulation_man_1</name>
+      <pose>0 0 0.9144 1.57079632679 0 1.57079632679</pose> <!-- Set location of man (Currently at center of the field). Z should be 1/2 of man height-->
+    </include>
+
+    <include>
+      <uri>model://man</uri>
+      <name>simulation_man_2</name>
+      <pose>-15 10 0.9144 1.57079632679 0 0</pose> <!-- Set location of man (Currently at center of the field). Z should be 1/2 of man height-->
+    </include>
+
+    <include>
+      <uri>model://man</uri>
+      <name>simulation_man_3</name>
+      <pose>30 -20 0.9144 1.57079632679 0 0</pose> <!-- Set location of man (Currently at center of the field). Z should be 1/2 of man height-->
+    </include>
+    
+  </world>
+</sdf>
